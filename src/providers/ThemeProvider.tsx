@@ -9,7 +9,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const theme = localStorage.getItem('data-theme') as 'light' | 'dark' | null
-    theme ? setCurrentTheme(theme) : setCurrentTheme('dark')
+    if (theme) {
+      setCurrentTheme(theme)
+    } else {
+      setCurrentTheme('dark')
+    }
   }, [])
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme)
