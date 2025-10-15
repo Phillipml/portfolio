@@ -1,4 +1,3 @@
-import { Theme } from '@/utils/theme'
 import { createContext } from 'react'
 
 interface ThemeProps {

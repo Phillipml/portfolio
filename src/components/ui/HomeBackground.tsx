@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const HomeBackground = (_props: unknown) => {
+const HomeBackground = () => {
   const [stars, setStars] = useState<Array<{
     id: number
     x: number
