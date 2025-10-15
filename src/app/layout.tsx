@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${iceland.variable} antialiased`}>
+      <body className={`${iceland.variable} antialiased`} suppressHydrationWarning={true}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

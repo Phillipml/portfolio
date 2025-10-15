@@ -1,14 +1,24 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const HomeBackground = (_props: unknown) => {
-  const stars = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 3
-  }))
+  const [stars, setStars] = useState<Array<{
+    id: number
+    x: number
+    y: number
+    size: number
+    delay: number
+  }>>([])
+
+  useEffect(() => {
+    setStars(Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      delay: Math.random() * 3
+    })))
+  }, [])
 
   return (
     <>
