@@ -6,9 +6,13 @@ export default function Home() {
     <>
       <HomeBackground />
       <Container>
-        <div className="w-6x1 h-max border-2 border-l-tertiary grid sm:flex w-auto justify-around">
-          <h2 className="text-tertiary text-9xl">Olá!</h2>
-          <div className="grid gap-6 w-2xl">
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col justify-between lg:flex-row items-center justify-center gap-4 lg:gap-8 p-4 max-w-7xl w-full">
+          <h2 className="text-tertiary text-7xl sm:text-6xl lg:text-8xl xl:text-9xl text-center lg:text-left">
+            Olá,
+            <br />
+            visitante!
+          </h2>
+          <div className="flex flex-col gap-4 lg:gap-6 max-w-2xl w-full">
             <p>Seja Bem vindo ao meu portfolio pessoal</p>
             <p>
               Criei este portfolio para que você possa aproximar dos meus
