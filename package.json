@@ -2,11 +2,12 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --fix ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
@@ -24,7 +25,9 @@
     "eslint": "^9",
     "eslint-config-next": "15.5.5",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.4.23",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",

@@ -12,6 +12,15 @@ const config: Config = {
         secondary: 'var(--secondary)',
         tertiary: 'var(--tertiary)',
         quaternary: 'var(--quaternary)'
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '1000%': { opacity: '1' }
+        }
+      },
+      animation: {
+        'fade-in': 'fade-in 1s ease-out'
       }
     }
   },
