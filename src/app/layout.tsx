@@ -1,6 +1,7 @@
 import { Iceland } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
+import { ReduxProvider } from '@/providers/ReduxProvider'
 
 const iceland = Iceland({
   subsets: ['latin'],
@@ -15,8 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${iceland.variable} antialiased`} suppressHydrationWarning={true}>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body
+        className={`${iceland.variable} antialiased`}
+        suppressHydrationWarning={true}
+      >
+        <ReduxProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   )
