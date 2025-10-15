@@ -23,3 +23,10 @@ body {
   color: var(--secondary);
   font-family: var(--font-iceland), sans-serif;
 }
+
+.text-glow {
+  @apply text-secondary;
+  text-shadow:
+    0 0 8px #00b2a9,
+    0 0 16px #e6e6e6;
+}
