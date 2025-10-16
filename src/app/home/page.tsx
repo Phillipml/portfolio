@@ -3,11 +3,8 @@ import Header from '@/components/layout/Header'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
 import { useRepoFilter } from '@/hooks/useRepoFilter'
-import { useGetProfileQuery } from '@/services/api'
 
 export default function HomePage() {
-  const username = process.env.NEXT_PUBLIC_USERNAME
-  const { data } = useGetProfileQuery(username ? username : '')
   const { repoList, error, isLoading } = useRepoFilter()
   const boxGlow = ['cyan-box', 'amber-box']
   if (isLoading) {
