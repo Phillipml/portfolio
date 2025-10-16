@@ -12,7 +12,6 @@ function Index() {
   const { data, error, isLoading } = useGetProfileQuery(
     username ? username : ''
   )
-  const avatarUrl = data?.avatar_url || <ErrorImage />
 
   if (isLoading)
     return (
@@ -30,28 +29,32 @@ function Index() {
         <div
           className="
     flex flex-col lg:flex-row items-center justify-center gap-4
-    p-4 max-w-7xl w-full mx-auto sm:fixed top-0 left-0
-   lg:translate-50
+    p-4 max-w-7xl w-full mx-auto min-h-screen
   "
         >
           <div className="relative flex justify-center items-center">
             <div className="absolute w-40 h-40 rounded-full bg-teal-500/30 blur-2xl animate-pulse" />
-
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
-              <Image
-                src={avatarUrl}
-                alt="imagem perfil"
-                fill
-                className="relative z-10 rounded-full ring-4 ring-transparent animate-fade-in object-cover"
-              />
+              {data?.avatar_url ? (
+                <Image
+                  src={data.avatar_url}
+                  alt="imagem perfil"
+                  fill
+                  className="relative z-10 rounded-full ring-4 ring-transparent animate-fade-in object-cover"
+                />
+              ) : (
+                <ErrorImage />
+              )}
             </div>
           </div>
+
           <h2 className="text-tertiary text-7xl sm:text-6xl lg:text-8xl xl:text-9xl text-center lg:text-left">
             Olá,
             <br />
             visitante!
           </h2>
-          <div className="flex flex-col gap-2 lg: max-w-2xl w-full text-xl sm:text-lg ">
+
+          <div className="flex flex-col gap-2 lg:max-w-2xl w-full text-xl sm:text-lg">
             <p>
               Meu nome é <span className="text-glow">Phillip</span>, um
               desenvolvedor <span className="text-glow">Front-End</span>{' '}
