@@ -1,6 +1,7 @@
 'use client'
 import Container from '@/components/layout/Container'
 import Button from '@/components/ui/Button'
+import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import { useGetProfileQuery } from '@/services/api'
 import Image from 'next/image'
@@ -11,7 +12,7 @@ function Index() {
   const { data, error, isLoading } = useGetProfileQuery(
     username ? username : ''
   )
-  const avatarUrl = data?.avatar_url
+  const avatarUrl = data?.avatar_url || <ErrorImage />
 
   if (isLoading)
     return (
@@ -19,7 +20,10 @@ function Index() {
         <LoadingSpinner />
       </>
     )
-  if (error) return <p>Erro ao carregar</p>
+  if (error)
+    return (
+      <ErrorImage className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10" />
+    )
   return (
     <div className="animate-fade-in">
       <Container>

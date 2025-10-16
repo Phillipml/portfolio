@@ -1,3 +1,4 @@
+import { UserType } from '@/types/UserType'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const api = createApi({
@@ -6,7 +7,7 @@ export const api = createApi({
     baseUrl: 'https://api.github.com/users'
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query({
+    getProfile: builder.query<UserType, string>({
       query: (username: string) => `/${username}`
     })
   })

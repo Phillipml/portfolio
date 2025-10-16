@@ -1,4 +1,5 @@
 'use client'
+import { useTheme } from '@/hooks/useTheme'
 import React, { useState } from 'react'
 
 interface Star {
@@ -20,6 +21,8 @@ const generateStars = (count: number): Star[] =>
 
 const HomeBackground = () => {
   const [stars] = useState<Star[]>(() => generateStars(100))
+  const { currentTheme } = useTheme()
+  const isDarkTheme = currentTheme === 'dark'
 
   return (
     <>
@@ -44,7 +47,7 @@ const HomeBackground = () => {
         {stars.map((star) => (
           <div
             key={star.id}
-            className="absolute bg-tertiary rounded-full shadow-[0_0_6px_#ffffff]"
+            className={`absolute  ${isDarkTheme ? 'bg-tertiary' : 'bg-secondary'} rounded-full ${isDarkTheme ? 'shadow-[0_0_6px_#ffffff]' : 'shadow-[0_0_6px_#001a19]'}`}
             style={{
               width: `${star.size}px`,
               height: `${star.size}px`,
