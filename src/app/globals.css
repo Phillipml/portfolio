@@ -19,9 +19,13 @@
 }
 
 body {
+  @apply min-h-screen m-0;
   background-color: var(--primary);
   color: var(--secondary);
   font-family: var(--font-iceland), sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .text-glow {
@@ -29,4 +33,13 @@ body {
   text-shadow:
     0 0 8px #00b2a9,
     0 0 16px #e6e6e6;
+}
+
+.cyan-box {
+  @apply border-secondary;
+  box-shadow: 0 0 20px var(--color-tertiary);
+}
+.amber-box {
+  @apply border-amber-400;
+  box-shadow: 0 0 20px theme(colors.amber.400);
 }

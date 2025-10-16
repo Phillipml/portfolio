@@ -1,3 +1,5 @@
+import { RepoType } from '@/types/RepoType'
+import { UserType } from '@/types/UserType'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const api = createApi({
@@ -6,10 +8,13 @@ export const api = createApi({
     baseUrl: 'https://api.github.com/users'
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query({
+    getProfile: builder.query<UserType, string>({
       query: (username: string) => `/${username}`
+    }),
+    getUserRepo: builder.query<RepoType[], string>({
+      query: (username: string) => `/${username}/repos`
     })
   })
 })
 
-export const { useGetProfileQuery } = api
+export const { useGetProfileQuery, useGetUserRepoQuery } = api
