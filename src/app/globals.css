@@ -37,9 +37,9 @@ body {
 
 .cyan-box {
   @apply border-secondary;
-  box-shadow: 0 0 20px var(--color-tertiary);
+  box-shadow: 0 0 10px var(--color-tertiary);
 }
 .amber-box {
   @apply border-amber-400;
-  box-shadow: 0 0 20px theme(colors.amber.400);
+  box-shadow: 0 0 10px theme(colors.amber.400);
 }
