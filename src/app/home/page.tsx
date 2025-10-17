@@ -2,10 +2,10 @@
 import Header from '@/components/layout/Header'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
-import { useRepoFilter } from '@/hooks/useRepoFilter'
+import { useGetRepoQuery } from '@/services/personalApi'
 
 export default function HomePage() {
-  const { repoList, error, isLoading } = useRepoFilter()
+  const { data, error, isLoading } = useGetRepoQuery()
   const boxGlow = ['cyan-box', 'amber-box']
   if (isLoading) {
     return <LoadingSpinner />
@@ -21,16 +21,23 @@ export default function HomePage() {
         <h2 className="text-2xl text-center mt-4 mb-4">Desenvolvedor Web</h2>
         <StackList />
       </div>
-      <div className="flex flex-wrap justify-between p-8 gap-4 w-100 m-auto">
-        {repoList?.map((repo, index) => {
+      <h2 className="text-justify mt-8 m-auto w-10/12  lg:w-5/12">
+        Este portfólio foi construído com integração direta à API do GitHub e a
+        uma API pessoal desenvolvida por mim. Aqui você encontra uma seleção
+        especial dos meus projetos — escolhidos a dedo para mostrar um pouco do
+        que gosto de criar e explorar no mundo do desenvolvimento!
+      </h2>
+      <div className="flex flex-wrap justify-between p-8 gap-4 lg:w-1/2 m-auto">
+        {data?.map((repo, index) => {
           const colorClass = boxGlow[index % boxGlow.length]
 
           return (
             <div
               key={repo.id}
-              className={`rounded-2xl basis-1/4 border p-4 bg-primary w-42 h-32 ${colorClass}`}
+              className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 bg-primary w-auto h-auto ${colorClass}`}
             >
-              <p className="text-center">{repo.name}</p>
+              <img src={repo.thumbnail} alt="" className="w-12 m-auto" />
+              <p className="text-center">{repo.repoName}</p>
             </div>
           )
         })}
