@@ -3,15 +3,12 @@ import Container from '@/components/layout/Container'
 import Button from '@/components/ui/Button'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
-import { useGetProfileQuery } from '@/services/api'
+import { useGetUserQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
 
 function Index() {
-  const username = process.env.NEXT_PUBLIC_USERNAME
-  const { data, error, isLoading } = useGetProfileQuery(
-    username ? username : ''
-  )
+  const { data, error, isLoading } = useGetUserQuery()
 
   if (isLoading)
     return (

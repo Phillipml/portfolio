@@ -47,7 +47,11 @@ const HomeBackground = () => {
         {stars.map((star) => (
           <div
             key={star.id}
-            className={`absolute  ${isDarkTheme ? 'bg-tertiary' : 'bg-secondary'} rounded-full ${isDarkTheme ? 'shadow-[0_0_6px_#ffffff]' : 'shadow-[0_0_6px_#001a19]'}`}
+            className={`absolute rounded-full ${
+              isDarkTheme
+                ? 'bg-tertiary shadow-[0_0_6px_#ffffff]'
+                : 'bg-secondary shadow-[0_0_6px_#001a19]'
+            }`}
             style={{
               width: `${star.size}px`,
               height: `${star.size}px`,
