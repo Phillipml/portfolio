@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
 import { useGetRepoQuery } from '@/services/api'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function HomePage() {
@@ -39,8 +40,15 @@ export default function HomePage() {
               key={repo.id}
               className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 bg-primary w-auto h-auto ${colorClass}`}
             >
-              <img src={repo.thumbnail} alt="" className="w-12 m-auto" />
-              <p className="text-center">{repo.repoName}</p>
+              <div className="w-12 h-12 relative m-auto">
+                <Image
+                  src={repo.thumbnail}
+                  alt={`${repo.repoName} image`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <p className="text-center mt-4">{repo.repoName}</p>
             </Link>
           )
         })}

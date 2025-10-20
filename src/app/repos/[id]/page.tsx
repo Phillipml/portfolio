@@ -88,11 +88,22 @@ function RepoId() {
         <p className="mb-12">{data?.description}</p>
 
         {markdown ? (
-          <div className=" p-4 bg-primary rounded-2xl border-2 border-secondary m-auto">
-            <h2 className="text-glow text-5xl text-center mb-24">
-              ReadMe do Projeto:
-            </h2>
-            <ReactMarkdown>{markdown}</ReactMarkdown>
+          <div className="p-4 bg-primary rounded-2xl border-2 border-secondary m-auto w-full max-w-full overflow-hidden">
+            <div
+              className="
+      prose prose-invert max-w-none break-words
+      [&>pre]:overflow-x-auto [&>pre]:break-normal
+      [&>pre]:whitespace-pre-wrap [&>code]:break-words
+      [&>img]:max-w-full [&>img]:h-auto
+      [&>table]:overflow-x-auto [&>table]:block
+      [&>p]:break-words
+    "
+            >
+              <h2 className="text-glow text-5xl text-center mb-24">
+                ReadMe do Projeto:
+              </h2>
+              <ReactMarkdown>{markdown}</ReactMarkdown>
+            </div>
           </div>
         ) : (
           <p>Carregando README...</p>
