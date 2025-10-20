@@ -1,16 +1,13 @@
-import { useGetProfileQuery } from '@/services/api'
 import Image from 'next/image'
 import React from 'react'
 import ErrorImage from '../ui/ErrorImage'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import Container from './Container'
 import Link from 'next/link'
+import { useGetUserQuery } from '@/services/api'
 
 function Header() {
-  const username = process.env.NEXT_PUBLIC_USERNAME
-  const { data, error, isLoading } = useGetProfileQuery(
-    username ? username : ''
-  )
+  const { data, error, isLoading } = useGetUserQuery()
 
   if (isLoading)
     return (

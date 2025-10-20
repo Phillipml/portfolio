@@ -1,4 +1,4 @@
-export interface List {
+export interface RepoType {
   repoName: string
   id: 0
   html_url: string
@@ -9,4 +9,9 @@ export interface List {
   demo_url: string
   highlight: string
   role: string
+}
+export interface Profile {
+  login: string
+  avatar_url: string
+  bio: string
 }

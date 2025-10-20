@@ -1,20 +1,21 @@
-import { RepoType } from '@/types/RepoType'
-import { UserType } from '@/types/UserType'
+import { RepoType, Profile } from '@/types/apiTypes'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const api = createApi({
-  reducerPath: 'api',
+  reducerPath: 'personalApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.github.com/users'
+    baseUrl: 'https://phillipml-personal-api.vercel.app/'
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query<UserType, string>({
-      query: (username: string) => `/${username}`
+    getUser: builder.query<Profile, void>({
+      query: () => 'api/profile'
     }),
-    getUserRepo: builder.query<RepoType[], string>({
-      query: (username: string) => `/${username}/repos`
+    getRepo: builder.query<RepoType[], void>({
+      query: () => 'api/repos'
+    }),
+    getRepoById: builder.query<RepoType, string>({
+      query: (id: string) => `api/repos/${id}`
     })
   })
 })
-
-export const { useGetProfileQuery, useGetUserRepoQuery } = api
+export const { useGetUserQuery, useGetRepoQuery, useGetRepoByIdQuery } = api

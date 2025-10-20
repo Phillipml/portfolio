@@ -2,10 +2,12 @@
 import Header from '@/components/layout/Header'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
-import { useGetRepoQuery } from '@/services/personalApi'
+import { useGetRepoQuery } from '@/services/api'
+import Link from 'next/link'
 
 export default function HomePage() {
   const { data, error, isLoading } = useGetRepoQuery()
+  const order = data?.toReversed()
   const boxGlow = ['cyan-box', 'amber-box']
   if (isLoading) {
     return <LoadingSpinner />
@@ -28,17 +30,18 @@ export default function HomePage() {
         que gosto de criar e explorar no mundo do desenvolvimento!
       </h2>
       <div className="flex flex-wrap justify-between p-8 gap-4 lg:w-1/2 m-auto">
-        {data?.map((repo, index) => {
+        {order?.map((repo, index) => {
           const colorClass = boxGlow[index % boxGlow.length]
 
           return (
-            <div
+            <Link
+              href={`repos/${repo.id}`}
               key={repo.id}
               className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 bg-primary w-auto h-auto ${colorClass}`}
             >
               <img src={repo.thumbnail} alt="" className="w-12 m-auto" />
               <p className="text-center">{repo.repoName}</p>
-            </div>
+            </Link>
           )
         })}
       </div>
