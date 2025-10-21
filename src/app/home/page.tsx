@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <div className="w-full h-auto p-12 bg-tertiary text-quaternary border-b-2 border-secondary pt-24">
+      <div className="w-full h-auto p-12 bg-tertiary text-quaternary border-b-2 border-secondary pt-38">
         <h2 className="text-4xl text-center">Phillip Menezes</h2>
         <h2 className="text-2xl text-center mt-4 mb-4">Desenvolvedor Web</h2>
         <StackList />
