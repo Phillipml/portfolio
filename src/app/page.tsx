@@ -1,5 +1,6 @@
 'use client'
 import Container from '@/components/layout/Container'
+import ThemeButton from '@/components/layout/ThemeButton'
 import Button from '@/components/ui/Button'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
@@ -23,12 +24,13 @@ function Index() {
   return (
     <div className="animate-fade-in">
       <Container>
-        <div
-          className="
+        <div className="relative">
+          <div
+            className="
     flex flex-col lg:flex-row items-center justify-center gap-4
     p-4 max-w-7xl w-full mx-auto min-h-screen
   "
-        >
+          >
           <div className="relative flex justify-center items-center">
             <div className="absolute w-40 h-40 rounded-full bg-teal-500/30 blur-2xl animate-pulse" />
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
@@ -91,6 +93,11 @@ function Index() {
             <Link href="home">
               <Button className="mt-2 w-full">Vamos começar :)</Button>
             </Link>
+          </div>
+          </div>
+          
+          <div className="fixed bottom-4 right-4 z-50">
+            <ThemeButton />
           </div>
         </div>
       </Container>

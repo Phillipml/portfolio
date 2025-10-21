@@ -1,6 +1,6 @@
 'use client'
 import { useTheme } from '@/hooks/useTheme'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Star {
   id: number
@@ -20,9 +20,16 @@ const generateStars = (count: number): Star[] =>
   }))
 
 const HomeBackground = () => {
-  const [stars] = useState<Star[]>(() => generateStars(100))
+  const [stars, setStars] = useState<Star[]>([])
   const { currentTheme } = useTheme()
-  const isDarkTheme = currentTheme === 'dark'
+  const isDarkTheme = currentTheme === 'light'
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStars(generateStars(100))
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
@@ -49,8 +56,8 @@ const HomeBackground = () => {
             key={star.id}
             className={`absolute rounded-full ${
               isDarkTheme
-                ? 'bg-tertiary shadow-[0_0_6px_#ffffff]'
-                : 'bg-secondary shadow-[0_0_6px_#001a19]'
+                ? 'bg-secondary shadow-[0_0_6px_#001a19]'
+                : 'bg-tertiary shadow-[0_0_6px_#ffffff]'
             }`}
             style={{
               width: `${star.size}px`,
