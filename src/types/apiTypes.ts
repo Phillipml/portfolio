@@ -14,4 +14,7 @@ export interface Profile {
   login: string
   avatar_url: string
   bio: string
+  whatsapp: string
+  linkedin: string
+  github: string
 }

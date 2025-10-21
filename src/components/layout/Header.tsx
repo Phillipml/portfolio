@@ -42,24 +42,27 @@ function Header() {
             <ul className="flex gap-4 mt-4 lg:grid-cols-2">
               <li className="text-center">
                 <Link
-                  href="/"
+                  href={`${data?.whatsapp}`}
                   className="bg-tertiary text-primary px-4 py-2 rounded-bl-2xl rounded-tr-2xl"
+                  target="_blank"
                 >
                   Whatsapp
                 </Link>
               </li>
               <li className="text-center">
                 <Link
-                  href="/"
+                  href={`${data?.linkedin}`}
                   className="bg-tertiary text-primary px-4 py-2 rounded-bl-2xl rounded-tr-2xl"
+                  target="_blank"
                 >
                   LinkedIn
                 </Link>
               </li>
               <li className="text-center">
                 <Link
-                  href="/"
+                  href={`${data?.github}`}
                   className="bg-tertiary text-primary px-4 py-2 rounded-bl-2xl rounded-tr-2xl"
+                  target="_blank"
                 >
                   Github
                 </Link>
