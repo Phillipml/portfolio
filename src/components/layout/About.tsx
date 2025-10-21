@@ -6,18 +6,26 @@ import Image from 'next/image'
 
 function About() {
   const { data, error, isLoading } = useGetUserQuery()
-  if (isLoading) <LoadingSpinner />
-  if (error) <h2>Error ao carregar informações</h2>
+  
+  if (isLoading) return <LoadingSpinner />
+  if (error) return <h2>Error ao carregar informações</h2>
+  
   return (
     <Container>
       <div className="w-full max-w-5xl mx-auto p-6 bg-tertiary border-2 border-secondary rounded-br-4xl rounded-tl-4xl flex flex-col md:flex-row gap-6 items-center justify-center">
         <div className="relative w-40 h-40 md:w-60 md:h-60 flex-shrink-0 border-2 border-primary rounded-full overflow-hidden">
-          <Image
-            src={`${data?.avatar_url}`}
-            alt="imagem perfil"
-            fill
-            className="object-contain p-4"
-          />
+          {data?.avatar_url ? (
+            <Image
+              src={data.avatar_url}
+              alt="imagem perfil"
+              fill
+              className="object-contain p-4"
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+              <span className="text-gray-600">Sem imagem</span>
+            </div>
+          )}
         </div>
         <div className="text-primary">
           <h2 className="text-4xl">Phillip Menezes</h2>
