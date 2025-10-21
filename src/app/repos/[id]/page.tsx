@@ -6,6 +6,7 @@ import { useGetRepoByIdQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
@@ -33,7 +34,7 @@ function RepoId() {
     return <LoadingSpinner />
   }
   if (error) {
-    return 'erro'
+    notFound()
   }
   return (
     <>

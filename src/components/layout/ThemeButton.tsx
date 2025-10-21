@@ -26,15 +26,16 @@ function ThemeButton() {
       className={`
         flex items-center justify-center gap-2 p-3
         rounded-full border-2 hover:scale-105 cursor-pointer
-        ${isDark 
-          ? 'bg-tertiary border-secondary text-secondary hover:bg-secondary hover:text-tertiary' 
-          : 'bg-white border-primary text-primary hover:bg-primary hover:text-white'
+        ${
+          isDark
+            ? 'bg-white border-primary text-primary hover:bg-primary hover:text-white'
+            : 'bg-tertiary border-secondary text-secondary hover:bg-secondary hover:text-tertiary'
         }
         transition-all duration-300 shadow-lg hover:shadow-xl
       `}
       title={isDark ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
     >
-      {isDark ? <BsSun size={20} /> : <BsMoon size={20} />}
+      {isDark ? <BsMoon size={20} /> : <BsSun size={20} />}
     </button>
   )
 }

@@ -7,6 +7,7 @@ import StackList from '@/components/ui/StackList'
 import { useGetRepoQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 export default function HomePage() {
   const { data, error, isLoading } = useGetRepoQuery()
@@ -16,7 +17,7 @@ export default function HomePage() {
     return <LoadingSpinner />
   }
   if (error) {
-    return <h2>Ocorreu um erro</h2>
+    notFound()
   }
   return (
     <>

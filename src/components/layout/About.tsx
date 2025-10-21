@@ -3,12 +3,13 @@ import Container from './Container'
 import { useGetUserQuery } from '@/services/api'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 
 function About() {
   const { data, error, isLoading } = useGetUserQuery()
   
   if (isLoading) return <LoadingSpinner />
-  if (error) return <h2>Error ao carregar informações</h2>
+  if (error) notFound()
   
   return (
     <Container>
