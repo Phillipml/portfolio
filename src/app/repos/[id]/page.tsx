@@ -40,7 +40,7 @@ function RepoId() {
       <Header />
       <div className="pt-24">
         <Container>
-        <h2 className="text-center text-3xl text-glow ">{data?.repoName}</h2>
+        <h2 className="text-center text-3xl text-glow mt-8">{data?.repoName}</h2>
         <div className="m-auto w-32 h-32 mt-8 mb-8 relative">
           <Image
             src={data?.thumbnail || ''}
