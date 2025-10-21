@@ -1,9 +1,9 @@
 import { Iceland } from 'next/font/google'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { ReduxProvider } from '@/providers/ReduxProvider'
 import HomeBackground from '@/components/ui/HomeBackground'
-
 
 const iceland = Iceland({
   subsets: ['latin'],
@@ -23,7 +23,11 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <ReduxProvider>
-            <ThemeProvider><HomeBackground />{children}</ThemeProvider>
+          <ThemeProvider>
+            <HomeBackground />
+            {children}
+            <Analytics />
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>
