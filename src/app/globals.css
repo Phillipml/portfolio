@@ -6,7 +6,7 @@
   --tertiary: #00b2a9;
   --quaternary: #001a19;
 }
-[data-theme='light'] {
+[data-theme='dark'] {
   --primary: #e6e6e6;
   --secondary: #0a0c0e;
 }

@@ -1,13 +1,22 @@
 export interface RepoType {
+  id: number
   repoName: string
-  id: 0
   html_url: string
+  highlight: boolean
   description: string
   readme: string
-  technologies: string[]
+  technologies: [
+    'Django',
+    'PostgreSQL',
+    'Docker',
+    'Poetry',
+    'pytest',
+    'Factory Boy',
+    'Gunicorn'
+  ]
   thumbnail: string
   demo_url: string
-  highlight: string
+  mainFocus: string
   role: string
 }
 export interface Profile {
