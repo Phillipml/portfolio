@@ -1,6 +1,6 @@
 'use client'
 import { useTheme } from '@/hooks/useTheme'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Star {
   id: number
@@ -20,9 +20,16 @@ const generateStars = (count: number): Star[] =>
   }))
 
 const HomeBackground = () => {
-  const [stars] = useState<Star[]>(() => generateStars(100))
+  const [stars, setStars] = useState<Star[]>([])
   const { currentTheme } = useTheme()
   const isDarkTheme = currentTheme === 'dark'
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStars(generateStars(100))
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
