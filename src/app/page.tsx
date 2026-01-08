@@ -6,7 +6,7 @@ import Header from '@/components/layout/Header'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
-import { useGetRepoQuery} from '@/services/api'
+import { useGetRepoQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -85,7 +85,7 @@ export default function Index() {
           )
         })}
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }
