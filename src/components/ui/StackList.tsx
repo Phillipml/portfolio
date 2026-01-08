@@ -11,7 +11,7 @@ function StackList() {
         <h2 className="mt-2">Typescript</h2>
       </div>
       <div className="flex flex-col items-center justify-center text-center">
-        <FaReact className="text-5xl animate-spin" />
+        <FaReact className="text-5xl" />
         <h2 className="mt-2">React</h2>
       </div>
       <div className="flex flex-col items-center justify-center text-center">
@@ -33,5 +33,4 @@ function StackList() {
     </div>
   )
 }
-
 export default StackList

@@ -9,14 +9,17 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const initializeTheme = () => {
-      const theme = localStorage.getItem('data-theme') as 'light' | 'dark' | null
+      const theme = localStorage.getItem('data-theme') as
+        | 'light'
+        | 'dark'
+        | null
       if (theme) {
         setCurrentTheme(theme)
       } else {
         setCurrentTheme('dark')
       }
     }
-    
+
     initializeTheme()
   }, [])
   useEffect(() => {
