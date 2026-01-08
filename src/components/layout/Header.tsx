@@ -42,7 +42,7 @@ function Header() {
   ]
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 w-full p-2 ${isDarkTheme ? 'bg-primary' : 'bg-secondary'} border-b-2`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full p-2 ${isDarkTheme ? 'bg-primary' : 'bg-secondary'} border-b-2 border-tertiary`}
     >
       <Container>
         <div className="w-full grid grid-cols-3 items-center gap-2 lg:gap-4">

@@ -6,12 +6,14 @@ import Header from '@/components/layout/Header'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
+import { useTheme } from '@/hooks/useTheme'
 import { useGetRepoQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Index() {
   const { data, error, isLoading } = useGetRepoQuery()
+  const { isDarkTheme } = useTheme()
   const order = data?.toReversed()
   const boxGlow = ['cyan-box', 'amber-box']
   if (isLoading) {
@@ -42,7 +44,7 @@ export default function Index() {
                 <Link
                   href={`repos/${repo.id}`}
                   key={repo.id}
-                  className={`rounded-2xl grid justify-center border p-4 bg-tertiary w-32 h-auto`}
+                  className={`rounded-2xl grid justify-center border p-4 ${isDarkTheme ? 'bg-tertiary' : 'bg-secondary'} w-32 h-auto`}
                 >
                   <div className="w-12 h-12 relative m-auto">
                     <Image
@@ -52,7 +54,11 @@ export default function Index() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-center mt-4">{repo.repoName}</p>
+                  <p
+                    className={`text-center mt-4 ${!isDarkTheme ? 'text-primary' : ''}`}
+                  >
+                    {repo.repoName}
+                  </p>
                 </Link>
               ) : null
             )}
@@ -65,12 +71,11 @@ export default function Index() {
         </h2>
         {order?.map((repo, index) => {
           const colorClass = boxGlow[index % boxGlow.length]
-
           return (
             <Link
               href={`repos/${repo.id}`}
               key={repo.id}
-              className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 bg-primary w-auto h-auto ${colorClass}`}
+              className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 w-auto h-auto ${colorClass} ${isDarkTheme ? 'bg-primary' : 'bg-secondary'}`}
             >
               <div className="w-12 h-12 relative m-auto">
                 <Image
@@ -80,7 +85,11 @@ export default function Index() {
                   className="object-contain"
                 />
               </div>
-              <p className="text-center mt-4">{repo.repoName}</p>
+              <p
+                className={`text-center mt-4 ${!isDarkTheme ? 'text-primary' : ''}`}
+              >
+                {repo.repoName}
+              </p>
             </Link>
           )
         })}

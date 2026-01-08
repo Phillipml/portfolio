@@ -1,12 +1,12 @@
 'use client'
 import { ThemeContext } from '@/context/ThemeContext'
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useMemo, useState } from 'react'
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('dark')
-  const [isDarkTheme, setIsDarkTheme] = useState(true)
   const lightTheme = () => setCurrentTheme('light')
   const darkTheme = () => setCurrentTheme('dark')
+  const IsDarkTheme = useMemo(() => currentTheme === 'dark', [currentTheme])
 
   useEffect(() => {
     const initializeTheme = () => {
@@ -27,13 +27,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme)
     localStorage.setItem('data-theme', currentTheme)
-    const confirmDarkTheme = currentTheme === 'dark'
-    setIsDarkTheme(confirmDarkTheme)
   }, [currentTheme])
 
   return (
     <ThemeContext.Provider
-      value={{ currentTheme, lightTheme, darkTheme, isDarkTheme }}
+      value={{ currentTheme, lightTheme, darkTheme, isDarkTheme: IsDarkTheme }}
     >
       {children}
     </ThemeContext.Provider>

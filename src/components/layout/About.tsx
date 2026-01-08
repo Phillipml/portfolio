@@ -15,7 +15,7 @@ function About() {
 
   return (
     <Container>
-      <div className="w-full max-w-5xl mx-auto p-6 bg-primary border-2 border-secondary rounded-br-4xl rounded-tl-4xl flex flex-col md:flex-row gap-6 items-center justify-center">
+      <div className="w-full max-w-5xl mx-auto p-6 bg-primary border-2 border-secondary rounded-br-4xl rounded-tl-4xl flex flex-col md:flex-row gap-6 items-center justify-center border-tertiary">
         <div className="relative w-40 h-40 md:w-60 md:h-60 flex-shrink-0 border-2 border-primary rounded-full overflow-hidden">
           {data?.avatar_url ? (
             <Image
