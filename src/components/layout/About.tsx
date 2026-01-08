@@ -5,10 +5,11 @@ import LoadingSpinner from '../ui/LoadingSpinner'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { FaFileDownload } from 'react-icons/fa'
+import { useTheme } from '@/hooks/useTheme'
 
 function About() {
   const { data, error, isLoading } = useGetUserQuery()
-
+  const { isDarkTheme } = useTheme()
   if (isLoading) return <LoadingSpinner />
   if (error) notFound()
 
@@ -29,7 +30,7 @@ function About() {
             </div>
           )}
         </div>
-        <div className="text-tertiary">
+        <div className={`${isDarkTheme ? 'text-tertiary' : 'text-secondary'}`}>
           <h2 className="text-4xl">Phillip Menezes</h2>
           <h3 className="text-3xl">Desenvolvedor Júnior Front-End</h3>
           <p>
@@ -80,7 +81,7 @@ function About() {
             <a
               href="/portfolio/curriculo.pdf"
               download="Phillip_Menezes_Curriculo.pdf"
-              className="bg-tertiary text-primary px-6 py-3 rounded-lg hover:bg-secondary hover:text-tertiary transition-colors duration-300 inline-flex items-center gap-2"
+              className={`${isDarkTheme ? 'bg-tertiary text-primary hover:bg-secondary hover:text-tertiary' : 'bg-secondary text-primary hover:bg-tertiary hover:text-secondary'} px-6 py-3 rounded-lg transition-colors duration-300 inline-flex items-center gap-2`}
             >
               <FaFileDownload />
               Baixe meu Currículo

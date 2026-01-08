@@ -7,9 +7,11 @@ import Link from 'next/link'
 import { useGetUserQuery } from '@/services/api'
 import ThemeButton from './ThemeButton'
 import { FaWhatsapp, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { useTheme } from '@/hooks/useTheme'
 
 function Header() {
   const { data, error, isLoading } = useGetUserQuery()
+  const { isDarkTheme } = useTheme()
 
   if (isLoading)
     return (
@@ -21,8 +23,27 @@ function Header() {
     return (
       <ErrorImage className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10" />
     )
+  const socialLinks = [
+    {
+      href: data?.whatsapp,
+      icon: FaWhatsapp,
+      title: 'WhatsApp'
+    },
+    {
+      href: data?.linkedin,
+      icon: FaLinkedin,
+      title: 'LinkedIn'
+    },
+    {
+      href: data?.github,
+      icon: FaGithub,
+      title: 'GitHub'
+    }
+  ]
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 w-full p-2 bg-primary border-b-2">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 w-full p-2 ${isDarkTheme ? 'bg-primary' : 'bg-secondary'} border-b-2`}
+    >
       <Container>
         <div className="w-full grid grid-cols-3 items-center gap-2 lg:gap-4">
           <Link
@@ -43,36 +64,18 @@ function Header() {
 
           <div className="flex justify-center">
             <ul className="flex gap-2 lg:gap-4">
-              <li>
-                <Link
-                  href={`${data?.whatsapp}`}
-                  className="bg-tertiary text-primary w-10 h-10 lg:w-12 lg:h-12 rounded-full hover:bg-secondary hover:text-tertiary transition-colors duration-300 flex items-center justify-center"
-                  target="_blank"
-                  title="WhatsApp"
-                >
-                  <FaWhatsapp size={16} className="lg:w-5 lg:h-5" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${data?.linkedin}`}
-                  className="bg-tertiary text-primary w-10 h-10 lg:w-12 lg:h-12 rounded-full hover:bg-secondary hover:text-tertiary transition-colors duration-300 flex items-center justify-center"
-                  target="_blank"
-                  title="LinkedIn"
-                >
-                  <FaLinkedin size={16} className="lg:w-5 lg:h-5" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`${data?.github}`}
-                  className="bg-tertiary text-primary w-10 h-10 lg:w-12 lg:h-12 rounded-full hover:bg-secondary hover:text-tertiary transition-colors duration-300 flex items-center justify-center"
-                  target="_blank"
-                  title="GitHub"
-                >
-                  <FaGithub size={16} className="lg:w-5 lg:h-5" />
-                </Link>
-              </li>
+              {socialLinks.map(({ href, icon: Icon, title }) => (
+                <li key={title}>
+                  <Link
+                    href={href || '#'}
+                    className={`bg-tertiary  ${isDarkTheme ? 'text-primary' : 'text-secondary'} w-10 h-10 lg:w-12 lg:h-12 rounded-full hover:bg-secondary hover:text-tertiary transition-colors duration-300 flex items-center justify-center`}
+                    target="_blank"
+                    title={title}
+                  >
+                    <Icon size={16} className="lg:w-5 lg:h-5" />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

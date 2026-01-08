@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from 'react'
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('dark')
+  const [isDarkTheme, setIsDarkTheme] = useState(true)
   const lightTheme = () => setCurrentTheme('light')
   const darkTheme = () => setCurrentTheme('dark')
 
@@ -22,13 +23,18 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
     initializeTheme()
   }, [])
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme)
     localStorage.setItem('data-theme', currentTheme)
+    const confirmDarkTheme = currentTheme === 'dark'
+    setIsDarkTheme(confirmDarkTheme)
   }, [currentTheme])
 
   return (
-    <ThemeContext.Provider value={{ currentTheme, lightTheme, darkTheme }}>
+    <ThemeContext.Provider
+      value={{ currentTheme, lightTheme, darkTheme, isDarkTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   )
