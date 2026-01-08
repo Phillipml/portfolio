@@ -9,7 +9,7 @@ export default function Footer() {
     >
       <Container className="flex justify-center items-center p-2">
         <p className={`${!isDarkTheme ? 'text-primary' : ''}`}>
-          Phillip Menezes
+          Phillip Menezes • Desenvolvedor Front-End
         </p>
       </Container>
     </div>
