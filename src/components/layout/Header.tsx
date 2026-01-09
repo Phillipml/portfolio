@@ -60,7 +60,6 @@ function Header() {
               <ErrorImage />
             )}
           </Link>
-
           <div className="flex justify-center">
             <ul className="flex gap-2 lg:gap-4">
               {socialLinks.map(({ href, icon: Icon, title }) => (
@@ -77,7 +76,6 @@ function Header() {
               ))}
             </ul>
           </div>
-
           <div className="flex justify-end">
             <ThemeButton />
           </div>
@@ -86,5 +84,4 @@ function Header() {
     </div>
   )
 }
-
 export default Header
