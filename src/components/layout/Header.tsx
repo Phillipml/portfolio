@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import ErrorImage from '../ui/ErrorImage'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import Container from './Container'
@@ -47,7 +46,7 @@ function Header() {
       <Container>
         <div className="w-full grid grid-cols-3 items-center gap-2 lg:gap-4">
           <Link
-            href="/home"
+            href="/"
             className="relative w-16 h-16 lg:w-20 lg:h-20 flex justify-center items-center"
           >
             {data?.avatar_url ? (
