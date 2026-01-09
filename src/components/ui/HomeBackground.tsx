@@ -21,8 +21,7 @@ const generateStars = (count: number): Star[] =>
 
 const HomeBackground = () => {
   const [stars, setStars] = useState<Star[]>([])
-  const { currentTheme } = useTheme()
-  const isDarkTheme = currentTheme === 'light'
+  const { isDarkTheme } = useTheme()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,8 +55,8 @@ const HomeBackground = () => {
             key={star.id}
             className={`absolute rounded-full ${
               isDarkTheme
-                ? 'bg-secondary shadow-[0_0_6px_#001a19]'
-                : 'bg-tertiary shadow-[0_0_6px_#ffffff]'
+                ? 'bg-tertiary shadow-[0_0_6px_#ffffff]'
+                : 'bg-secondary shadow-[0_0_6px_#001a19]'
             }`}
             style={{
               width: `${star.size}px`,

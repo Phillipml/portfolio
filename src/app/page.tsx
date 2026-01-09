@@ -2,7 +2,6 @@
 import About from '@/components/layout/About'
 import Container from '@/components/layout/Container'
 import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import StackList from '@/components/ui/StackList'
@@ -10,11 +9,12 @@ import { useTheme } from '@/hooks/useTheme'
 import { useGetRepoQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useMemo } from 'react'
 
 export default function Index() {
   const { data, error, isLoading } = useGetRepoQuery()
   const { isDarkTheme } = useTheme()
-  const order = data?.toReversed()
+  const order = useMemo(() => data?.toReversed(), [data])
   const boxGlow = ['cyan-box', 'amber-box']
   if (isLoading) {
     return <LoadingSpinner />
@@ -26,7 +26,6 @@ export default function Index() {
   }
   return (
     <>
-      <Header />
       <div className="w-full h-auto text-quaternary border-b-2 border-secondary pt-34">
         <About />
       </div>

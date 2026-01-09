@@ -65,7 +65,7 @@ function About() {
           </p>
           <p>
             Atualmente, estou expandindo meus conhecimentos para{' '}
-            <span className="text-glow">back-end</span>, estudando{' '}
+            <span className="text-glow">Back-end</span>, estudando{' '}
             <span className="text-glow">Node.js</span>,{' '}
             <span className="text-glow">Python</span>,{' '}
             <span className="text-glow">Docker</span> e bancos de dados{' '}

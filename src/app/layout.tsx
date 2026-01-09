@@ -1,9 +1,11 @@
+'use client'
 import { Iceland } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { ReduxProvider } from '@/providers/ReduxProvider'
 import HomeBackground from '@/components/ui/HomeBackground'
+import Header from '@/components/layout/Header'
 
 const iceland = Iceland({
   subsets: ['latin'],
@@ -25,6 +27,7 @@ export default function RootLayout({
         <ReduxProvider>
           <ThemeProvider>
             <HomeBackground />
+            <Header />
             {children}
             <Analytics />
           </ThemeProvider>

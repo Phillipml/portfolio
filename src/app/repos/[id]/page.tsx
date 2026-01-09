@@ -51,7 +51,7 @@ function RepoId() {
               src={data?.thumbnail || ''}
               alt={`${data?.repoName} imagem`}
               fill
-              className="object-contain"
+              className="object-contain mt-2"
             />
           </div>
           <div
