@@ -17,33 +17,39 @@ _Interface do portfólio em tema escuro com design moderno_
 # 🚀 Funcionalidades
 
 ## 🏠 **Página Inicial Interativa:**
+
 - Apresentação pessoal com animações
 - Sistema de temas dinâmico
 - Design responsivo e moderno
 
 ## 📁 **Catálogo de Projetos:**
+
 - Lista dinâmica de repositórios do GitHub
 - Destaques especiais para projetos principais
 - Navegação fluida entre projetos
 
 ## 🔍 **Páginas de Detalhes:**
+
 - Visualização completa de cada projeto
 - Renderização automática de README
 - Links para demo e repositório
 - Stack tecnológico detalhado
 
 ## 🎨 **Sistema de Temas:**
+
 - Toggle entre tema claro/escuro
 - Persistência da preferência
 - Transições suaves
 - Design consistente
 
 ## 📱 **Design Responsivo:**
+
 - Otimizado para desktop, tablet e mobile
 - Layout adaptativo
 - Componentes flexíveis
 
 ## ⚡ **Performance Otimizada:**
+
 - Lazy loading de imagens
 - Cache inteligente com RTK Query
 - Animações performáticas
@@ -52,6 +58,7 @@ _Interface do portfólio em tema escuro com design moderno_
 # 🛠️ Tecnologias Utilizadas
 
 ## **Frontend:**
+
 - **Next.js 15.5.5**: Framework React com App Router
 - **React 19.1.0**: Biblioteca para construção da interface
 - **TypeScript 5.8.3**: Superset do JavaScript com tipagem estática
@@ -59,16 +66,19 @@ _Interface do portfólio em tema escuro com design moderno_
 - **React Icons 5.5.0**: Biblioteca de ícones
 
 ## **Gerenciamento de Estado:**
+
 - **Redux Toolkit 2.9.0**: Gerenciamento de estado global
 - **RTK Query**: Cache e sincronização de dados
 - **React Redux 9.2.0**: Integração React-Redux
 
 ## **Integração e APIs:**
+
 - **GitHub API**: Integração direta com repositórios
 - **API Pessoal**: Backend customizado para dados
 - **Vercel Analytics**: Métricas de performance
 
 ## **Desenvolvimento:**
+
 - **ESLint**: Linting e qualidade de código
 - **Prettier**: Formatação automática
 - **TypeScript ESLint**: Linting específico para TS
@@ -223,11 +233,13 @@ npx tsc --noEmit
 # 📊 Integração com APIs
 
 ## **GitHub API:**
+
 - Busca automática de repositórios
 - Dados atualizados em tempo real
 - Cache inteligente para performance
 
 ## **API Pessoal:**
+
 - Backend customizado para dados específicos
 - Controle total sobre apresentação
 - Integração com múltiplas fontes
@@ -252,6 +264,7 @@ contato.phillip.menezes@gmail.com
 [Phillip Menezes](https://www.linkedin.com/in/phillip-menezes-063a39227/)  
 **GitHub:**
 [Phillipml](https://github.com/Phillipml/)
+
 ---
 
 **Nota**: Este é um portfólio profissional desenvolvido com as melhores práticas de Next.js, TypeScript e design moderno.

@@ -9,13 +9,13 @@ import nextPlugin from '@next/eslint-plugin-next'
 export default [
   {
     ignores: [
-      "dist/**/*",
-      ".next/**/*",
-      ".storybook/**/*",
-      "playwright.config.ts",
-      ".jest/**/*",
-      "**/*.test.tsx",
-      "**/*.stories.tsx"
+      'dist/**/*',
+      '.next/**/*',
+      '.storybook/**/*',
+      'playwright.config.ts',
+      '.jest/**/*',
+      '**/*.test.tsx',
+      '**/*.stories.tsx'
     ]
   },
   js.configs.recommended,
@@ -23,7 +23,7 @@ export default [
   {
     files: ['next-env.d.ts'],
     rules: {
-      '@typescript-eslint/triple-slash-reference': 'off', // Allow triple slash references in Next.js env file
+      '@typescript-eslint/triple-slash-reference': 'off' // Allow triple slash references in Next.js env file
     }
   },
   {
@@ -31,19 +31,22 @@ export default [
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      'import': importPlugin,
-      '@next/next': nextPlugin,
+      import: importPlugin,
+      '@next/next': nextPlugin
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...nextPlugin.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        { allowConstantExport: true }
       ],
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' }
+      ],
       '@typescript-eslint/no-use-before-define': 'error',
-      'import/no-extraneous-dependencies': 'off', // Disable for Next.js projects
+      'import/no-extraneous-dependencies': 'off' // Disable for Next.js projects
     },
     languageOptions: {
       ecmaVersion: 2020,
@@ -55,4 +58,4 @@ export default [
       }
     }
   }
-];
+]

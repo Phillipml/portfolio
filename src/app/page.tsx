@@ -1,107 +1,99 @@
 'use client'
+import About from '@/components/layout/About'
 import Container from '@/components/layout/Container'
-import ThemeButton from '@/components/layout/ThemeButton'
-import Button from '@/components/ui/Button'
+import Footer from '@/components/layout/Footer'
 import ErrorImage from '@/components/ui/ErrorImage'
 import LoadingSpinner from '@/components/ui/LoadingSpinner'
-import { useGetUserQuery } from '@/services/api'
+import StackList from '@/components/ui/StackList'
+import { useTheme } from '@/hooks/useTheme'
+import { useGetRepoQuery } from '@/services/api'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useMemo } from 'react'
 
-function Index() {
-  const { data, error, isLoading } = useGetUserQuery()
-
-  if (isLoading)
-    return (
-      <>
-        <LoadingSpinner />
-      </>
-    )
-  if (error)
+export default function Index() {
+  const { data, error, isLoading } = useGetRepoQuery()
+  const { isDarkTheme } = useTheme()
+  const order = useMemo(() => data?.toReversed(), [data])
+  const boxGlow = ['cyan-box', 'amber-box']
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+  if (error) {
     return (
       <ErrorImage className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10" />
     )
+  }
   return (
-    <div className="animate-fade-in">
-      <Container>
-        <div className="relative">
-          <div
-            className="
-    flex flex-col lg:flex-row items-center justify-center gap-4
-    p-4 max-w-7xl w-full mx-auto min-h-screen
-  "
-          >
-          <div className="relative flex justify-center items-center">
-            <div className="absolute w-40 h-40 rounded-full bg-teal-500/30 blur-2xl animate-pulse" />
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
-              {data?.avatar_url ? (
+    <>
+      <div className="w-full h-auto text-quaternary border-b-2 border-secondary pt-34">
+        <About />
+      </div>
+      <div className="w-full h-auto p-12 bg-tertiary text-quaternary border-b-2 border-secondary">
+        <h2 className="text-4xl text-center">Phillip Menezes</h2>
+        <h2 className="text-2xl text-center mt-4 mb-4">Desenvolvedor Web</h2>
+        <StackList />
+      </div>
+      <div className="w-full h-auto p-8 bg-primary text-quaternary border-b-2 border-tertiary">
+        <Container>
+          <h2 className="text-center text-3xl text-glow ">Destaques</h2>
+          <div className="flex flex-wrap justify-center gap-8 mt-12">
+            {data?.map((repo) =>
+              repo.highlight ? (
+                <Link
+                  href={`repos/${repo.id}`}
+                  key={repo.id}
+                  className={`rounded-2xl grid justify-center border p-4 ${isDarkTheme ? 'bg-tertiary' : 'bg-secondary'} w-32 h-auto`}
+                >
+                  <div className="w-12 h-12 relative m-auto">
+                    <Image
+                      src={repo.thumbnail}
+                      alt={`${repo.repoName} image`}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <p
+                    className={`text-center mt-4 ${!isDarkTheme ? 'text-primary' : ''}`}
+                  >
+                    {repo.repoName}
+                  </p>
+                </Link>
+              ) : null
+            )}
+          </div>
+        </Container>
+      </div>
+      <div className="flex flex-wrap justify-between p-8 gap-4 lg:w-1/2 m-auto">
+        <h2 className="flex-1 basis-11/12 text-center text-3xl text-glow mb-4">
+          Alguns dos meus projetos:
+        </h2>
+        {order?.map((repo, index) => {
+          const colorClass = boxGlow[index % boxGlow.length]
+          return (
+            <Link
+              href={`repos/${repo.id}`}
+              key={repo.id}
+              className={`flex-1 basis-1/4 rounded-2xl grid justify-center border p-4 w-auto h-auto ${colorClass} ${isDarkTheme ? 'bg-primary' : 'bg-secondary'}`}
+            >
+              <div className="w-12 h-12 relative m-auto">
                 <Image
-                  src={data.avatar_url}
-                  alt="imagem perfil"
+                  src={repo.thumbnail}
+                  alt={`${repo.repoName} image`}
                   fill
-                  className="relative z-10 rounded-full ring-4 ring-transparent animate-fade-in object-cover"
+                  className="object-contain"
                 />
-              ) : (
-                <ErrorImage />
-              )}
-            </div>
-          </div>
-
-          <h2 className="text-tertiary text-7xl sm:text-6xl lg:text-8xl xl:text-9xl text-center lg:text-left">
-            Olá,
-            <br />
-            visitante!
-          </h2>
-
-          <div className="flex flex-col gap-2 lg:max-w-2xl w-full text-xl sm:text-lg">
-            <p>
-              Meu nome é <span className="text-glow">Phillip</span>, um
-              desenvolvedor <span className="text-glow">Front-End</span>{' '}
-              apaixonado por criar soluções digitais que fazem a diferença, e
-              seja bem-vindo ao meu{' '}
-              <span className="text-glow">portfólio pessoal</span>.
-            </p>
-            <p>
-              Desenvolvi este espaço utilizando{' '}
-              <span className="text-glow">TypeScript</span> e{' '}
-              <span className="text-glow">React</span>, combinando boas práticas
-              com um fluxo moderno de desenvolvimento.
-            </p>
-            <p>
-              Aqui, você verá o poder do{' '}
-              <span className="text-glow">Redux</span> aliado ao{' '}
-              <span className="text-glow">RTK Query</span> para o gerenciamento
-              eficiente de dados, além de uma base sólida de testes com{' '}
-              <span className="text-glow">Testing Library</span>,{' '}
-              <span className="text-glow">Jest</span> e{' '}
-              <span className="text-glow">Cypress</span>.
-            </p>
-            <p>
-              Toda a interface foi construída com{' '}
-              <span className="text-glow">Tailwind</span>. Mas aqui você irá
-              encontrar projetos a base de um{' '}
-              <span className="text-glow">Design System</span> próprio,
-              estilizado com{' '}
-              <span className="text-glow">Styled-components</span>, focando em
-              desempenho, otimização e uma experiência visual agradável.
-            </p>
-            <p>
-              Cada detalhe deste portfólio reflete minha evolução como
-              desenvolvedor e o cuidado em transformar código em experiências
-              significativas.
-            </p>
-            <Link href="home">
-              <Button className="mt-2 w-full">Vamos começar :)</Button>
+              </div>
+              <p
+                className={`text-center mt-4 ${!isDarkTheme ? 'text-primary' : ''}`}
+              >
+                {repo.repoName}
+              </p>
             </Link>
-          </div>
-          </div>
-          
-          <div className="fixed bottom-4 right-4 z-50">
-            <ThemeButton />
-          </div>
-        </div>
-      </Container>
-    </div>
+          )
+        })}
+      </div>
+      <Footer />
+    </>
   )
 }
-export default Index

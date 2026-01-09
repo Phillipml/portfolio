@@ -6,10 +6,10 @@ export const useTheme = () => {
   if (!context) {
     throw new Error('useTheme precisa de um Provider')
   }
-
   return {
     currentTheme: context?.currentTheme,
     lightTheme: context?.lightTheme,
-    darkTheme: context?.darkTheme
+    darkTheme: context?.darkTheme,
+    isDarkTheme: context?.isDarkTheme
   }
 }
