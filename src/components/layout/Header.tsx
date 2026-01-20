@@ -44,7 +44,7 @@ function Header() {
       className={`fixed top-0 left-0 right-0 z-50 w-full p-2 ${isDarkTheme ? 'bg-primary' : 'bg-secondary'} border-b-2 border-tertiary`}
     >
       <Container>
-        <div className="w-full grid grid-cols-3 items-center gap-2 lg:gap-4">
+        <div className="w-full max-w-5xl m-auto grid grid-cols-3 items-center gap-2 lg:gap-4">
           <Link
             href="/"
             className="relative w-16 h-16 lg:w-20 lg:h-20 flex justify-center items-center"
