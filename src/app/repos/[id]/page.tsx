@@ -43,16 +43,18 @@ function RepoId() {
       <Header />
       <div className="pt-24">
         <Container>
-          <div className="m-auto w-32 h-32 mt-8 mb-8 relative">
-            <h2 className="text-center text-3xl text-glow mt-8">
+          <div className="m-auto w-2/3 mt-8 mb-8 flex flex-col items-center">
+            <h2 className="text-center text-3xl text-glow mt-8 mb-4">
               {data?.repoName}
             </h2>
-            <Image
-              src={data?.thumbnail || ''}
-              alt={`${data?.repoName} imagem`}
-              fill
-              className="object-contain mt-2"
-            />
+            <div className="relative w-1/3 aspect-video mt-2">
+              <Image
+                src={data?.thumbnail || ''}
+                alt={`${data?.repoName} imagem`}
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
           <div
             className={`p-4 ${isDarkTheme ? 'bg-primary' : 'bg-secondary text-primary'} rounded-2xl border-2 border-secondary m-auto mb-12`}
@@ -93,7 +95,7 @@ function RepoId() {
           <h2 className="text-glow text-5xl text-center mt-12 mb-4">
             Meu Objetivo:
           </h2>
-          <p className="mb-12">{data?.description}</p>
+          <p className="mb-12 text-center">{data?.description}</p>
 
           {markdown ? (
             <div
