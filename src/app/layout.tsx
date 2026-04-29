@@ -6,6 +6,8 @@ import { ThemeProvider } from '@/providers/ThemeProvider'
 import { ReduxProvider } from '@/providers/ReduxProvider'
 import HomeBackground from '@/components/ui/HomeBackground'
 import Header from '@/components/layout/Header'
+import ChatBot from '@/components/layout/Chatbot'
+import AppProvider from '@/providers/AppProvider'
 
 const iceland = Iceland({
   subsets: ['latin'],
@@ -24,14 +26,13 @@ export default function RootLayout({
         className={`${iceland.variable} antialiased`}
         suppressHydrationWarning={true}
       >
-        <ReduxProvider>
-          <ThemeProvider>
-            <HomeBackground />
-            <Header />
-            {children}
-            <Analytics />
-          </ThemeProvider>
-        </ReduxProvider>
+        <AppProvider>
+          <HomeBackground />
+          <Header />
+          {children}
+          <ChatBot />
+          <Analytics />
+        </AppProvider>
       </body>
     </html>
   )
