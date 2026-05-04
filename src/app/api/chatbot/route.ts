@@ -1,16 +1,19 @@
 import OpenAI from 'openai'
+import type { RepoType } from '@/types/apiTypes'
 
 const client = new OpenAI({
   apiKey: process.env.GROQ_API_KEY,
   baseURL: 'https://api.groq.com/openai/v1'
 })
 
-function findRelevantRepos(question: string, repos: any[]) {
+function findRelevantRepos(question: string, repos: RepoType[]) {
   const q = question.toLowerCase()
   const filtered = repos.filter((repo) => {
     const context =
       `${repo.repoName} ${repo.description} ${repo.mainFocus} ${(repo.technologies || []).join(' ')}`.toLowerCase()
-    return q.split(' ').some((word) => word.length > 2 && context.includes(word))
+    return q
+      .split(' ')
+      .some((word) => word.length > 2 && context.includes(word))
   })
   return filtered.length > 0 ? filtered.slice(0, 5) : repos.slice(0, 5)
 }
@@ -38,8 +41,18 @@ REGRAS CRÍTICAS:
 3. Se não encontrar um projeto EXATO, sugira o projeto mais próximo ou mencione as tecnologias que ele domina.
 4. Nunca diga que não tem acesso a informações se houver dados nos projetos fornecidos.
 5. Responda sempre no mesmo idioma do usuário.
-6. Se for listar projetos ou stacks, liste em forma de lista os projetos, preocupando com a melhor formatação para melhor leitura e entendimento do usuário.
-
+6. Caso tenha que listar algo, como projetos ou stacks,se o usuario requisitar, use EXATAMENTE este formato - cada item em LINHA SEPARADA com número seguido de ponto:
+   
+   Nome do Projeto:
+   Descrição aqui
+   
+  Nome do Projeto:
+   Descrição aqui
+   
+   Nome do Projeto:
+   Descrição aqui
+   
+   IMPORTANTE: Pressione ENTER duas vezes entre cada item. NUNCA coloque tudo na mesma linha. NUNCA use asteriscos no início da linha e nem utilize dois asteriscos seguidos como **.
 DADOS DO PERFIL:
 ${JSON.stringify(profile, null, 2)}
 
