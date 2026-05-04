@@ -32,12 +32,12 @@ function About() {
         </div>
         <div className={`${isDarkTheme ? 'text-tertiary' : 'text-secondary'}`}>
           <h2 className="text-4xl">Phillip Menezes</h2>
-          <h3 className="text-3xl">Desenvolvedor Júnior Front-End</h3>
-          <p>
-            Meu nome é <span className="text-glow">Phillip</span>, desenvolvedor{' '}
-            <span className="text-glow">Front-End</span> apaixonado por
-            tecnologia e por criar soluções digitais que fazem a diferença. Seja
-            bem-vindo ao meu <span className="text-glow">portfólio</span>!
+          <h3 className="text-3xl">Desenvolvedor Júnior Full-Stack</h3>
+          <p className="mt-4">
+            Meu nome é <span className="text-glow">Phillip</span>, desenvolvedor
+            full stack apaixonado por tecnologia e por criar soluções digitais
+            que fazem a diferença. Seja bem-vindo ao meu{' '}
+            <span className="text-glow">portfólio</span>!
           </p>
           <p>
             Este portfólio foi construído com{' '}
@@ -63,9 +63,8 @@ function About() {
             estilizados com <span className="text-glow">Styled-components</span>{' '}
             e <span className="text-glow">Bootstrap</span>.
           </p>
-          <p>
-            Atualmente, estou expandindo meus conhecimentos para{' '}
-            <span className="text-glow">Back-end</span>, estudando{' '}
+          <p className="mt-4">
+            Possuo conhecimentos em Back-end, me aprimorando em{' '}
             <span className="text-glow">Node.js</span>,{' '}
             <span className="text-glow">Python</span>,{' '}
             <span className="text-glow">Docker</span> e bancos de dados{' '}
