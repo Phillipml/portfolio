@@ -1,6 +1,7 @@
 'use client'
 import { useTheme } from '@/hooks/useTheme'
 import { useState, useEffect, useRef } from 'react'
+import { LuBot, LuBotOff } from 'react-icons/lu'
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +44,7 @@ export default function ChatBot() {
       } else {
         throw new Error('No answer received')
       }
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -57,7 +58,7 @@ export default function ChatBot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-2 right-6 z-50 flex flex-col items-end">
       {isOpen && (
         <div className="mb-4 w-80 sm:w-96 h-[500px] bg-quaternary rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-tertiary transition-all animate-in slide-in-from-bottom-5">
           <div
@@ -93,7 +94,7 @@ export default function ChatBot() {
                   <strong className="block text-xs opacity-75 mb-1">
                     {m.role === 'user' ? 'Você' : 'Phillip AI'}
                   </strong>
-                  {m.content}
+                  <div className="whitespace-pre-line">{m.content}</div>
                 </div>
               </div>
             ))}
@@ -134,22 +135,9 @@ export default function ChatBot() {
         className={`w-14 h-14 ${isDarkTheme ? 'bg-secondary text-quaternary border-2 border-quaternary' : 'bg-secondary text-tertiary'} rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer`}
       >
         {isOpen ? (
-          <span className="text-2xl">✕</span>
+          <LuBotOff className="text-2xl" />
         ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-            />
-          </svg>
+          <LuBot className="text-2xl" />
         )}
       </button>
     </div>

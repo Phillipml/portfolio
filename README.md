@@ -55,6 +55,14 @@ _Interface do portfólio em tema escuro com design moderno_
 - Animações performáticas
 - SEO otimizado
 
+## 🤖 **Assistente de IA Integrado:**
+
+- Chatbot com IA usando Llama 3.3 70B via Groq API
+- Respostas contextuais sobre projetos e habilidades
+- Formatação inteligente de listas e descrições
+- Integração com dados do perfil e repositórios
+- Interface conversacional para recrutadores e clientes
+
 # 🛠️ Tecnologias Utilizadas
 
 ## **Frontend:**
@@ -75,6 +83,8 @@ _Interface do portfólio em tema escuro com design moderno_
 
 - **GitHub API**: Integração direta com repositórios
 - **API Pessoal**: Backend customizado para dados
+- **Groq API**: Modelo Llama 3.3 70B para chatbot inteligente
+- **OpenAI SDK**: Integração com API de IA
 - **Vercel Analytics**: Métricas de performance
 
 ## **Desenvolvimento:**
@@ -87,6 +97,17 @@ _Interface do portfólio em tema escuro com design moderno_
 
 - Node.js (versão 18 ou superior)
 - npm ou yarn
+- Chave de API do Groq (para o chatbot funcionar)
+
+## 🔑 Variáveis de Ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto com as seguintes variáveis:
+
+```env
+GROQ_API_KEY=sua_chave_aqui
+```
+
+Para obter uma chave de API gratuita, acesse: [https://console.groq.com](https://console.groq.com)
 
 # 🚀 Como Executar
 
@@ -124,6 +145,9 @@ _Interface do portfólio em tema escuro com design moderno_
 ```
 src/
 ├── app/                    # App Router do Next.js
+│   ├── api/               # API Routes
+│   │   └── chatbot/       # API do chatbot com IA
+│   │       └── route.ts   # Rota POST para processar mensagens
 │   ├── home/              # Página principal do portfólio
 │   ├── repos/[id]/        # Páginas dinâmicas de projetos
 │   ├── layout.tsx         # Layout raiz da aplicação
@@ -131,7 +155,8 @@ src/
 ├── components/
 │   ├── layout/            # Componentes de layout
 │   │   ├── About.tsx      # Seção sobre mim
-│   │   ├── Container.tsx   # Container responsivo
+│   │   ├── Chatbot.tsx    # Componente do chatbot com IA
+│   │   ├── Container.tsx # Container responsivo
 │   │   ├── Header.tsx     # Cabeçalho da aplicação
 │   │   └── ThemeButton.tsx # Botão de alternância de tema
 │   └── ui/                # Componentes de interface
@@ -146,16 +171,18 @@ src/
 │   └── useTheme.tsx       # Hook para gerenciamento de tema
 ├── providers/             # Provedores de contexto
 │   ├── AppProvider.tsx    # Provedor principal
+│   ├── ChatbotProvider.tsx # Provedor do chatbot (Redux)
 │   ├── ReduxProvider.tsx  # Provedor Redux
-│   └── ThemeProvider.tsx # Provedor de tema
+│   └── ThemeProvider.tsx  # Provedor de tema
 ├── services/              # Integração com APIs
-│   └── api.ts            # Configuração RTK Query
+│   ├── api.ts             # Configuração RTK Query
+│   └── chatbotApi.ts      # API do chatbot
 ├── store/                 # Configuração Redux
-│   └── store.ts          # Store Redux
+│   └── store.ts           # Store Redux
 ├── types/                 # Definições TypeScript
-│   └── apiTypes.ts       # Tipos da API
+│   └── apiTypes.ts        # Tipos da API
 └── utils/                 # Utilitários
-    └── theme.ts          # Utilitários de tema
+    └── theme.ts           # Utilitários de tema
 ```
 
 # 🎯 Como Usar
@@ -165,6 +192,7 @@ src/
 3. **Detalhes dos Projetos**: Clique em qualquer projeto para ver detalhes completos
 4. **Alterne Temas**: Use o botão de tema para alternar entre modo claro/escuro
 5. **Navegação**: Use o menu para navegar entre seções
+6. **Assistente de IA**: Clique no ícone do robô no canto inferior direito para conversar com o assistente sobre projetos e habilidades
 
 # 🏪 Funcionalidades do Portfólio
 
@@ -203,7 +231,40 @@ src/
 - Cache eficiente com RTK Query
 - SEO otimizado para busca
 
-# 🧪 Qualidade de Código
+# � **Assistente de IA (Chatbot)**
+
+## Como Funciona
+
+O assistente de IA é um chatbot integrado ao portfólio que permite conversar sobre os projetos e habilidades do desenvolvedor:
+
+- **Interface**: Botão flutuante no canto inferior direito com ícone de robô
+- **Modelo**: Llama 3.3 70B executado via Groq API
+- **Dados**: Integração com API pessoal contendo perfil e repositórios GitHub
+- **Contexto**: Respostas sempre baseadas nos projetos e habilidades reais do desenvolvedor
+
+## Recursos
+
+- ✅ Respostas contextuais sobre projetos específicos
+- ✅ Busca inteligente por tecnologias (React, Python, Django, etc.)
+- ✅ Formatação automática em listas numeradas
+- ✅ Detecção de palavras-chave nos repositórios
+- ✅ Fallback para os 5 projetos mais relevantes quando não encontra correspondência exata
+- ✅ Prompt engineering para evitar respostas genéricas
+
+## Exemplo de Uso
+
+```
+Usuário: "Liste projetos com Python"
+IA: "Aqui estão os projetos que utilizam Python:
+
+1. Django Personal Blog
+   Blog pessoal completo com Django...
+
+2. Bookstore API
+   API REST com Django REST Framework..."
+```
+
+# � Qualidade de Código
 
 O projeto segue as melhores práticas de desenvolvimento:
 
@@ -244,6 +305,14 @@ npx tsc --noEmit
 - Controle total sobre apresentação
 - Integração com múltiplas fontes
 
+## **Groq API (Chatbot):**
+
+- Modelo Llama 3.3 70B para processamento de linguagem natural
+- Respostas rápidas e contextualizadas
+- Custo zero com tier gratuito da Groq
+- System prompt customizado para manter foco nos projetos do desenvolvedor
+- Integração via OpenAI SDK com baseURL customizado
+
 # 🚀 Deploy e Produção
 
 - **Vercel**: Deploy automático e otimizado
@@ -267,4 +336,4 @@ contato.phillip.menezes@gmail.com
 
 ---
 
-**Nota**: Este é um portfólio profissional desenvolvido com as melhores práticas de Next.js, TypeScript e design moderno.
+**Nota**: Este é um portfólio profissional desenvolvido com as melhores práticas de Next.js, TypeScript e design moderno. O **Assistente de IA integrado** é uma feature diferenciada que demonstra habilidades em integração de APIs, prompt engineering e desenvolvimento full stack.
