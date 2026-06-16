@@ -78,7 +78,7 @@ function About() {
           </p>
           <div className="mt-6">
             <a
-              href="/portfolio/curriculo.pdf"
+              href="/portfolio/curriculo_Phillip_Menezes_Loureiro_FullStack.pdf"
               download="Phillip_Menezes_Curriculo.pdf"
               className={`${isDarkTheme ? 'bg-tertiary text-primary hover:bg-secondary hover:text-tertiary' : 'bg-secondary text-primary hover:bg-tertiary hover:text-secondary'} px-6 py-3 rounded-lg transition-colors duration-300 inline-flex items-center gap-2`}
             >
